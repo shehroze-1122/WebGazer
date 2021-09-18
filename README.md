@@ -1,7 +1,7 @@
 # Webgazer.js with calibration
 
 Steps to use-
-1. Click [here](https://wafer.netlify.app/) to open
+1. Click [here](https://shehroze-1122.github.io/WebGazer/) to open
 2. Allow access to camera
 3. On the popup click calibrate
 4. Follow instructions in the next popup
