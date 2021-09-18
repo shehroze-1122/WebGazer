@@ -1,5 +1,3 @@
-// "use strict";
-
 var PointCalibrate = 0;
 var CalibrationPoints={};
 var isCalibrated=false;
@@ -26,6 +24,9 @@ function PopUpInstruction(){
       confirm: true
     }
   }).then(isConfirm => {
+    if(isConfirm){
+      isCalibrated=true;
+    }
     ShowCalibrationPoint();
   });
 
@@ -94,7 +95,7 @@ $(document).ready(function(){
 
                   sleep(5000).then(() => {
                       stop_storing_points_variable(); // stop storing the prediction points
-                      var past50 = get_points() // retrieve the stored points
+                      var past50 = webgazer.getStoredPoints(); // retrieve the stored points
                       var precision_measurement = calculatePrecision(past50);
                       var accuracyLabel = "<a>Accuracy | "+precision_measurement+"%</a>";
                       document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show the accuracy in the nav bar.
@@ -109,9 +110,10 @@ $(document).ready(function(){
                           if (isConfirm){
                             //clear the calibration & hide the last middle button
                             ClearCanvas();
-                            isCalibrated=true;
                           } else {
                             //use restart function to restart the calibration
+                            document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
+                            webgazer.clearData();
                             ClearCalibration();
                             ClearCanvas();
                             ShowCalibrationPoint();
@@ -136,7 +138,8 @@ function ShowCalibrationPoint() {
 * This function clears the calibration buttons memory
 */
 function ClearCalibration(){
-  window.localStorage.clear();
+  // Clear data from WebGazer
+
   $(".Calibration").css('background-color','red');
   $(".Calibration").css('opacity',0.2);
   $(".Calibration").prop('disabled',false);

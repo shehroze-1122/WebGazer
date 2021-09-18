@@ -17,26 +17,39 @@ Instructions on use can be found in the README repository.
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   <script async type="text/javascript" src="./webgazer.js"></script>
   <style>
     #testImage{
       background-image:url('');
-      background-size:cover;
+      background-size: 100% 100%;
+      background-attachment: fixed;
       background-position: center;
-      height: 100vh; 
-      width: 100%;
+      background-repeat: no-repeat;
     }
+    i{
+      margin-left: 8px;
+    }
+    .btns button{
+      margin-left: 10px;
+      padding: 5px 10px !important;
+    }
+
   </style>
 </head>
 
 <body LANG="en-US" LINK="#0000ff" DIR="LTR" id="testImage">
-<div class="d-flex justify-content-end">
-    <p id="Accuracy">
-      <a href="#">Not Yet Calibrate</a>
-    </p>
-    <a href="#" class="btn-sm" onclick="Restart()">Recalibrate</a>
-    <a href="#" class="btn-sm" onclick="saveGaze(gazeData); saveGaze(onlyTime);">Save</a>
+<div class="btns d-flex justify-content-end mt-3">
+
+    <button class="btn btn-warning mr-3" id="Accuracy"> Not yet Calibrated</button>
+    <button class="btn btn-primary" onclick="Restart()">Recalibrate<i class="fas fa-power-off"></i></button>
+    <button class="btn btn-primary" onclick="saveGaze(gazeData)">Save<i class="fas fa-save"></i></button>
+    <button class="btn btn-primary" onclick="webgazer.pause()">Pause<i class="fas fa-pause"></i></button>
+    <button class="btn btn-primary" onclick="webgazer.resume()">Resume<i class="fas fa-forward"></i></button>
     <input class="btn-sm" type="file" id="backImage" onchange="readURL(this);">
+
   </div>
   
   <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
@@ -89,7 +102,6 @@ Instructions on use can be found in the README repository.
     <input type="button" class="Calibration" id="Pt7"></input>
     <input type="button" class="Calibration" id="Pt8"></input>
     <input type="button" class="Calibration" id="Pt9"></input>
-    <img id="blah" src="" alt="your image" />
   </div>
 
   
